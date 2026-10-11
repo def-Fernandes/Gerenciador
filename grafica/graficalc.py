@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 import sys
 
 
-load_dotenv()
+
+load_dotenv() # Pega os arquivos de chave, tokem e id_lista de um pasta oculta, pois essas informações não podem ser mostradas.
 
 
 def resource_path(relative_path):
@@ -20,7 +21,7 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-
+# Definição das constantes
 API_KEY = os.getenv('API_KEY')
 TOKEN = os.getenv('TOKEN')
 ID_LISTA = os.getenv('ID_LISTA')
@@ -31,6 +32,7 @@ FONTE = 'Helvetica'
 BACKGROUND_PRINCIPAL = '#0D111C'
 BACKGROUND_CABECALHO = '#1E2C47'
 
+# Criação da janela
 
 janela = tk.Tk()
 janela.title('Graficalc MD')
@@ -40,7 +42,7 @@ janela.geometry('1000x700')
 janela.config(bg=BACKGROUND_PRINCIPAL)
 
 
-# Frame 1 -----------------------------------------------------------------------------------------------------------------------
+# Frame 1 Parte do cabeçalho ---------------------------------------------------------------------------------------------
 
 
 frame_cabecalho = tk.Frame(
@@ -168,6 +170,9 @@ def calcular():
     preco = ((tamanho1 * tamanho2) * preco_material) + acrecimo_lucro
     preco = f'{preco:.2f}'.replace('.', ',')
     label_preco.config(text=f'Preço: R${preco}')
+
+
+# Parte onde fica a calculadora gráfica -----------------------------------------------------------------------------------------------------
 
 
 frame_calculadora = tk.Frame(janela, bg=BACKGROUND_PRINCIPAL)
@@ -355,7 +360,7 @@ botao_calcular.grid(
     columnspan=3
     )
 
-# Frame 2 -------------------------------------------------------------------------------------------------------
+# Frame 2 Parte do preenchimento do pedido -------------------------------------------------------------------------------------------------------
 
 def pegar_info():
     cliente = entry_cliente.get()
